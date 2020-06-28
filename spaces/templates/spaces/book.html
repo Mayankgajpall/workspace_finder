@@ -1,0 +1,52 @@
+{% extends 'spaces/base.html' %}\
+{% load static %}
+{% load day_filter %}
+{% block content %}
+<section class="page-section bg-light" id="team">
+    <div class="container">
+        {% if c %}
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Appointment already Booked!</h2>
+                <h2>Check this booking in "Your Bookings" option</h2>
+                <h2>To change Date, just delete previous one and book again. Thank you!</h2><br>
+                <form action="{% url 'search_result' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{c.0.booked_space.city}}" name="search">
+                    <input class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" type="submit" value="Explore More">
+                </form>
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Booking for {{ res.name }}</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="{% static 'spaces/' %}{{res.image}}" alt="" />
+                        <form action="{% url 'booked' %}" method="post">
+                            {% csrf_token %}
+                            <h4>Select Date for Visit:</h4><br>
+                            <p><input type="date" name="booking_date" min="{{1|addDays|date:'Y-m-d'}}" max="{{45|addDays|date:'Y-m-d'}}" required></p>
+                            <input type="hidden" name="space_id" value="{{ res.id }}">
+                            <input class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" type="submit" value="Book Now">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+    <!-- 
+    <h1>Booking for {{ res.name }}</h1>
+    <form action="{% url 'booked' %}" method="post">
+        {% csrf_token %}
+        Select Date for Visit:<input type="date" name="booking_date">
+        <input type="hidden" name="space_id" value="{{ res.id }}">
+        <button type="submit">Book Now</button>
+    </form>
+    -->
+{% endblock content %}

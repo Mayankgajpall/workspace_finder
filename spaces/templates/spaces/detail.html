@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSpace Finder</title>
+</head>
+<body>
+        <h1>{{results.name}}</h1>
+        <p>{{results.address}}</p>
+        <p>{{results.city}}</p>
+        <p><b>{{results.price}}</b></p>
+        <p>{{results.description}}</p>
+        <a href="{% url 'book' results.id %}"><button>Book Visit</button></a>
+</body>
+</html>

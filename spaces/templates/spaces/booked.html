@@ -1,0 +1,37 @@
+{% extends 'spaces/base.html' %}\
+{% load static %}
+{% block content %}
+<section class="page-section bg-light" id="team">
+    <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Appointment booked for {{res.name}}, dated {{date}}</h2>
+                <h2>Check your upcoming bookings from "Your Bookings" option</h2><br>
+                <form action="{% url 'search_result' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{res.city}}" name="search">
+                    <input class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" type="submit" value="Explore More">
+                </form>
+            </div>
+    </div>
+</section>
+{% endblock content %}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Appointment booked on {{date}} for {{res.name}}</h1>
+    <h1>Check your upcoming bookings from Your Bookings option<h1></h1>
+    <form action="{% url 'search_result' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="{{res.city}}" name="search">
+        <input type="submit" value="Explore More">
+    </form>
+</body>
+</html>
+-->
