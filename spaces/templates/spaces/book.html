@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="team-member">
-                        <img class="mx-auto rounded-circle" src="{% static 'spaces/' %}{{res.image}}" alt="" />
+                        <img class="mx-auto rounded-circle" src="{{res.image.url}}" alt="" />
                         <form action="{% url 'booked' %}" method="post">
                             {% csrf_token %}
                             <h4>Select Date for Visit:</h4><br>

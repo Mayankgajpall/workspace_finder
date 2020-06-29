@@ -18,7 +18,7 @@
                 {% for b in res_next %}
                     {% if forloop.counter|divisibleby:2 %}
                         <li class="timeline-inverted">
-                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{% static 'spaces/' %}{{b.booked_space.image}}" alt="" /></div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{{b.booked_space.image.url}}" alt="" /></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>{{b.booking_date}}</h4>
@@ -30,7 +30,7 @@
                         </li>
                     {% else %}
                         <li>
-                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{% static 'spaces/' %}{{b.booked_space.image}}" alt="" /></div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{{b.booked_space.image.url}}" alt="" /></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>{{b.booking_date}}</h4>
@@ -62,7 +62,7 @@
                 {% for b in res_prev %}
                     {% if forloop.counter|divisibleby:2 %}
                         <li class="timeline-inverted">
-                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{% static 'spaces/' %}{{b.booked_space.image}}" alt="" /></div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{{b.booked_space.image.url}}" alt="" /></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>{{b.booking_date}}</h4>
@@ -74,7 +74,7 @@
                         </li>
                     {% else %}
                         <li>
-                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{% static 'spaces/' %}{{b.booked_space.image}}" alt="" /></div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{{b.booked_space.image.url}}" alt="" /></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>{{b.booking_date}}</h4>
