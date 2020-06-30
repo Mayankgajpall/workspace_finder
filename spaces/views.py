@@ -12,6 +12,7 @@ from django.contrib import messages
 
 def search_res(request):
     city = request.POST['search']
+    city = city.capitalize()
     res = get_list_or_404(Workspaces,city=city)
     context = {'res':res}
     return render(request,'spaces/search.html',context)
