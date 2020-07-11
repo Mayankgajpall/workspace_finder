@@ -25,8 +25,9 @@ SECRET_KEY = 'cc8gc7nq*$cn_3axq9y108nv4q0kraex(xy=c^*!-cq^3)t8-q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+DEBUG_PROPAGATE_EXCEPTIONS = True
 
-ALLOWED_HOSTS = ['workspacefinder.herokuapp.com']
+ALLOWED_HOSTS = ['https://workspacefinder.herokuapp.com/']
 
 
 # Application definition
