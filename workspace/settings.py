@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'cc8gc7nq*$cn_3axq9y108nv4q0kraex(xy=c^*!-cq^3)t8-q'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -130,9 +130,9 @@ LOGIN_URL = 'login_register_page'
 MEDIA_ROOT = os.path.join(BASE_DIR,'spaces/static/spaces/')
 MEDIA_URL = "/spaces/static/spaces/"
 
-AWS_ACCESS_KEY_ID = 'AKIA6GHGLGPS77AUX5O2'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'workspace-finder'
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
