@@ -1,0 +1,41 @@
+{% extends "spaces/base.html" %}
+{% load static %}
+{% block content %}
+        <!-- Masthead-->
+        <header class="masthead page-section" id="contact">
+            <div class="container">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %} style="width: 40%;margin: auto;" role="alert">
+                            <h6 class="alert-heading">{{message}}</h4>
+                        </div><br>
+                    {% endfor %}
+                {% endif %}
+                <div class="masthead-subheading">Welcome To Our Workspace Finder!</div>
+                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+                <form method="POST" id="searchForm" autocomplete="off" action="{% url 'search_result' %}">
+                    {% csrf_token %}
+                    <!--<div class="autocomplete" style="width:300px;">
+                        <input type="text" class="form-control" id="search" name="search" placeholder="City">
+                    </div>-->
+                    <div class="row">
+                        <div class="col-md-4" ></div>
+                        <div class="col-md-4" >
+                            <div class="form-group">
+                                <div class="autocomplete">
+                                <input class="form-control" name="search" id="search" type="text" placeholder="Enter City" required="required" data-validation-required-message="Please enter City." /> 
+                                </div><br><br>
+                                <input class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" type="submit" value="Let's Go">
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+               <!-- <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Let's Go</a> -->
+            </div>
+        </header>
+        <script src="{% static 'spaces/search.js' %}" ></script>
+        <script>
+            var countries = {{ city|safe }};
+            autocomplete(document.getElementById("search"), countries);
+        </script>
+{% endblock content %}

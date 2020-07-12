@@ -1,0 +1,99 @@
+{% extends 'spaces/base.html' %}
+{% load static %}
+{% block content %}
+<section class="page-section" id="about">
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %} style="width: 40%;margin: auto; text-align: center;" role="alert">
+                    <h6 class="alert-heading">{{message}}</h4>
+                </div><br>
+            {% endfor %}
+        {% endif %}
+        <div class="text-center">
+            <br><h2 class="section-heading text-uppercase">Upcoming Visits</h2><br>
+        </div>
+        <ul class="timeline">
+            {% if res_next|length > 0 %}
+                {% for b in res_next %}
+                    {% if forloop.counter|divisibleby:2 %}
+                        <li class="timeline-inverted">
+                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{{b.booked_space.image.url}}" alt="" /></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{{b.booking_date}}</h4>
+                                    <h4 class="subheading">{{b.booked_space}}</h4>
+                                    <h4 class="subheading">{{b.booked_space.city}}</h4>
+                                </div>
+                                <a href="{% url 'delete' b.id %}" onclick="return confirm('Are you sure you want to delete this?')"><div class="timeline-body" style="color: red;" >Delete Now</div></a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{{b.booked_space.image.url}}" alt="" /></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{{b.booking_date}}</h4>
+                                    <h4 class="subheading">{{b.booked_space}}</h4>
+                                    <h4 class="subheading">{{b.booked_space.city}}</h4>
+                                </div>
+                                <a href="{% url 'delete' b.id %}" onclick="return confirm('Are you sure you want to delete this?')"><div class="timeline-body" style="color: red;" >Delete Now</div></a>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4>Book a<br />Visit<br />Please!</h4>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <br>
+    <hr style="width:80%;height:2px;color:gray;background-color:gray;text-align:center;">
+    <div class="container">
+        <div class="text-center">
+            <br><h2 class="section-heading text-uppercase">Previous Visits</h2><br>
+        </div>
+        <ul class="timeline">
+            {% if res_prev|length > 0 %}
+                {% for b in res_prev %}
+                    {% if forloop.counter|divisibleby:2 %}
+                        <li class="timeline-inverted">
+                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{{b.booked_space.image.url}}" alt="" /></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{{b.booking_date}}</h4>
+                                    <h4 class="subheading">{{b.booked_space}}</h4>
+                                    <h4 class="subheading">{{b.booked_space.city}}</h4>
+                                </div>
+                                <div class="timeline-body"><p class="text-muted"></p></div>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid2" src="{{b.booked_space.image.url}}" alt="" /></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>{{b.booking_date}}</h4>
+                                    <h4 class="subheading">{{b.booked_space}}</h4>
+                                    <h4 class="subheading">{{b.booked_space.city}}</h4>
+                                </div>
+                                <div class="timeline-body"><p class="text-muted"></p></div>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+            <li class="timeline-inverted">
+                <div class="timeline-image">
+                    <h4>No Previous<br />Visits<br />Yet!</h4>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</section>
+{% endblock content %}

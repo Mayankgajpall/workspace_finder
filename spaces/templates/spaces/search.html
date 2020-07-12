@@ -1,0 +1,55 @@
+{% extends "spaces/base.html" %}
+{% load static %}
+{% block content %}
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">{{res.0.city}}</h2>
+            <h3 class="section-subheading text-muted">Explore workspaces in {{res.0.city}} city</h3>
+        </div>
+        <div class="row">
+            {% for result in res %}
+                <div class="col-lg-4 col-sm-6 mb-4">
+                    <div class="portfolio-item">
+                        <a class="portfolio-link" data-toggle="modal" href="#a{{result.id}}">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="{{result.image.url}}" alt=""></a>
+                        <div class="portfolio-caption">
+                            <a class="portfolio-link" data-toggle="modal" href="#a{{result.id}}"><div class="portfolio-caption-heading">{{result.name}}</div></a>
+                            <a href="{% url 'book' result.id %}"><div class="portfolio-caption-subheading text-muted">Book Visit</div></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-modal modal fade" id="a{{result.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="close-modal" data-dismiss="modal"><img src="{% static 'spaces/assets/img/close-icon.svg' %}" alt="Close modal" /></div>
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-8">
+                                        <div class="modal-body">
+                                            <!-- Project Details Go Here-->
+                                            <h2 class="text-uppercase">{{result.name}}</h2>
+                                            <p class="item-intro text-muted">{{result.address}}</p>
+                                            <img class="img-fluid d-block mx-auto" src="{{result.image.url}}" alt="" />
+                                            <p>{{result.description}}</p>
+                                            <ul class="list-inline">
+                                                <li>Price: {{result.price}}</li>
+                                                <li>Capacity: {{result.capacity}}</li>
+                                                <li>City: {{result.city}}</li>
+                                            </ul>
+                                             <a href="{% url 'book' result.id %}"><button class="btn btn-primary" type="button"><i class="fas fa-times mr-1"></i>Book Visit</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
