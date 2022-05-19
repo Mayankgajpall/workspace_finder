@@ -4,3 +4,6 @@ User can explore various workspaces, can book any of them, in comfort of their s
 for dummy user: username - demouser
                 password - password123!
 Cities avaiable: Hyderabad, Bengaluru, Mumbai.
+
+# Link to the application
+https://workspacefinder.herokuapp.com/
